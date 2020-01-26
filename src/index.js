@@ -3,6 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+axios.interceptors.request.use(request => {
+    // 'request' watches for sending a request
+    // i.e.: not having internet connection
+    console.log(request);
+    return request;
+}, error => {
+    console.log(error);
+    return Promise.reject(error);
+});
+
+axios.interceptors.response.use(request => {
+    console.log(request);
+    return request;
+}, error => {
+    console.log(error);
+    return Promise.reject(error);
+});
 
 ReactDOM.render( <App />, document.getElementById( 'root' ) );
 registerServiceWorker();

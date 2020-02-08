@@ -6,11 +6,11 @@ import './NewPost.css';
 class NewPost extends Component {
     state = {
         title: '',
-        body: '',
+        content: '',
         author: 'Max'
     }
 
-    componentDidMount() {
+    componentDidMount () {
         console.log(this.props);
     }
 
@@ -20,10 +20,9 @@ class NewPost extends Component {
             body: this.state.content,
             author: this.state.author
         };
-        
         axios.post('/posts', data)
             .then(response => {
-                console.log(response)
+                console.log(response);
             });
     }
 
